@@ -31,6 +31,11 @@ void PyAVEVAInteractionObj::StartVenvPy(System::String^ venv_exe_path) {
 		PyConfig_InitIsolatedConfig(PyAVEVAInteractionObj::pyConfig);
 		PyConfig_SetString(PyAVEVAInteractionObj::pyConfig, &PyAVEVAInteractionObj::pyConfig->executable, wch_venv_exe_path);
 
+		// Set home to the directory containing python.exe so Python can find its stdlib (encodings, etc.)
+		System::String^ homeDir = System::IO::Path::GetDirectoryName(venv_exe_path);
+		pin_ptr<const wchar_t> wch_home = PtrToStringChars(homeDir);
+		PyConfig_SetString(PyAVEVAInteractionObj::pyConfig, &PyAVEVAInteractionObj::pyConfig->home, wch_home);
+
 		PyAVEVAInteractionObj::pyStatus = &Py_InitializeFromConfig(PyAVEVAInteractionObj::pyConfig);
 		if (PyStatus_Exception(*PyAVEVAInteractionObj::pyStatus)) {
 			goto exception;
