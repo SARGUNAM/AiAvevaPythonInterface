@@ -42,6 +42,13 @@ void PyAVEVAInteractionObj::StartVenvPy(System::String^ venv_exe_path) {
 		}
 
 		PyConfig_Clear(PyAVEVAInteractionObj::pyConfig);
+
+		// Add the directory containing this DLL to sys.path so pyavevae3dext.pyd is found automatically
+		System::String^ dllDir = System::IO::Path::GetDirectoryName(
+			System::Reflection::Assembly::GetExecutingAssembly()->Location);
+		System::String^ sysPathCmd = "import sys; sys.path.insert(0, r'" + dllDir + "')";
+		PyRun_SimpleString(typecast::StringToCharP(sysPathCmd));
+
 		Console::WriteLine("Python Virtual Environment Started Successfuly.");
 		PyAVEVAInteractionObj::isEnvOpen = true;
 		return;
@@ -80,6 +87,13 @@ void PyAVEVAInteractionObj::StartSysPy() {
 		else
 		{
 			PyAVEVAInteractionObj::isEnvOpen = true;
+
+			// Add the directory containing this DLL to sys.path so pyavevae3dext.pyd is found automatically
+			System::String^ dllDir = System::IO::Path::GetDirectoryName(
+				System::Reflection::Assembly::GetExecutingAssembly()->Location);
+			System::String^ sysPathCmd = "import sys; sys.path.insert(0, r'" + dllDir + "')";
+			PyRun_SimpleString(typecast::StringToCharP(sysPathCmd));
+
 			Console::WriteLine("System Leval Python initialized.");
 		}
 	}
