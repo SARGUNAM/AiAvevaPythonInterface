@@ -82,12 +82,12 @@
     <LibraryPath>C:\Program Files (x86)\Python310-32\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Program Files\Python310\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files\Python310\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Aibelprogs\Python\Installed\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Aibelprogs\Python\Installed\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Program Files\Python310\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files\Python310\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Aibelprogs\Python\Installed\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Aibelprogs\Python\Installed\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
