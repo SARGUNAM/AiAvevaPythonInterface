@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc:*)",
+      "Bash(git fetch:*)",
+      "Bash(git remote:*)",
+      "Bash(py --list)",
+      "Bash(where python:*)",
+      "Read(//c//**)",
+      "Read(//c/Aibelprogs/Python/**)",
+      "Bash(\"C:/Aibelprogs/Python/Installed/python.exe\" --version)",
+      "Bash(\"C:/Aibelprogs/Python/Installed/python.exe\" -c \"import struct; print\\(struct.calcsize\\(''P''\\)*8, ''bit''\\)\")",
+      "Bash(reg query:*)",
+      "Bash(curl -L -o \"C:/Aibelprogs/Python/python-3.10.4-installer-32bit.exe\" \"https://www.python.org/ftp/python/3.10.4/python-3.10.4.exe\" --progress-bar)",
+      "Bash(curl -L --ssl-no-revoke -o \"C:/Aibelprogs/Python/python-3.10.4-installer-32bit.exe\" \"https://www.python.org/ftp/python/3.10.4/python-3.10.4.exe\" --progress-bar)",
+      "Bash(cmd /c \"C:\\\\Aibelprogs\\\\Python\\\\python-3.10.4-installer-32bit.exe\" /quiet InstallAllUsers=0 TargetDir=\"C:\\\\Aibelprogs\\\\Python\\\\Python3104_32\" Include_test=0 Include_launcher=0 PrependPath=0)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(tasklist)",
+      "Read(//c/Aibelprogs/AibelCode/SARGUNAM/PyAVEVAE3D/$APPDATA/Programs/**)",
+      "Read(//c/Aibelprogs/AibelCode/SARGUNAM/PyAVEVAE3D/$LOCALAPPDATA/Programs/**)",
+      "Bash(cmd /c \"py -3.10-32 --version 2>&1\")",
+      "Bash(cmd /c \"py --list 2>&1\")",
+      "Bash(cmd /c \"start /wait C:\\\\Aibelprogs\\\\Python\\\\python-3.10.4-installer-32bit.exe /quiet InstallAllUsers=0 TargetDir=C:\\\\Aibelprogs\\\\Python\\\\Python3104_32 Include_test=0 Include_launcher=0 PrependPath=0 && echo DONE\" 2>&1)",
+      "Bash(curl -L --ssl-no-revoke -o \"C:/Aibelprogs/Python/python-3.10.4-embed-win32.zip\" \"https://www.python.org/ftp/python/3.10.4/python-3.10.4-embed-win32.zip\" --progress-bar)",
+      "Bash(cmd /c \"powershell -Command \\\\\"Expand-Archive -Path 'C:\\\\\\\\Aibelprogs\\\\\\\\Python\\\\\\\\python-3.10.4-embed-win32.zip' -DestinationPath 'C:\\\\\\\\Aibelprogs\\\\\\\\Python\\\\\\\\Python3104_32' -Force\\\\\" && echo EXTRACTED\" 2>&1)",
+      "Skill(update-config)",
+      "Bash(cp:*)"
+    ]
+  }
+}
