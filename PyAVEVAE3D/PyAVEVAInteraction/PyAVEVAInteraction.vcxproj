@@ -100,8 +100,8 @@
       <AdditionalDependencies />
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y "$(OutDir)$(TargetFileName)" "N:\MswR400Develop\Net\DLL\"</Command>
-      <Message>Copying $(TargetFileName) to N:\MswR400Develop\Net\DLL\</Message>
+      <Command>xcopy /Y "$(OutDir)$(TargetFileName)" "N:\MswR400Develop\Net\DLL\" &amp;&amp; xcopy /Y "C:\Aibelprogs\Python\Installed\python313.dll" "N:\MswR400Develop\Net\DLL\"</Command>
+      <Message>Copying $(TargetFileName) and python313.dll to N:\MswR400Develop\Net\DLL\</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -139,8 +139,8 @@
       <AdditionalDependencies />
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y "$(OutDir)$(TargetFileName)" "N:\MswR400Develop\Net\DLL\"</Command>
-      <Message>Copying $(TargetFileName) to N:\MswR400Develop\Net\DLL\</Message>
+      <Command>xcopy /Y "$(OutDir)$(TargetFileName)" "N:\MswR400Develop\Net\DLL\" &amp;&amp; xcopy /Y "C:\Aibelprogs\Python\Installed\python313.dll" "N:\MswR400Develop\Net\DLL\"</Command>
+      <Message>Copying $(TargetFileName) and python313.dll to N:\MswR400Develop\Net\DLL\</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
