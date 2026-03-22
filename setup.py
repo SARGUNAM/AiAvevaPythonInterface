@@ -7,8 +7,8 @@ print(module_path)
 
 setup(
     name='pyavevae3dext',
-    version='0.0.2',
-    description='Python Package Allows to interact with AVEVA E3D2.1.0.3 using AVEVA Embadded Python Interaction dll..',
+    version='0.1.0',
+    description='Python Package Allows to interact with AVEVA Unified Engineering 3.0 using AVEVA Embedded Python Interaction dll (64-bit).',
     long_description=pathlib.Path("README.md").read_text(),
     long_description_content_type="text/markdown",
     url="https://github.com/shivangKheradiya/PyAVEVAE3D",
@@ -25,7 +25,7 @@ setup(
         "Topic :: Software Development :: Libraries",
         "Topic :: Utilities",
     ],
-    python_requires=">=3.10,<3.11",
+    python_requires=">=3.10",
     packages=find_packages(),
     include_package_data=True,
     package_data={
