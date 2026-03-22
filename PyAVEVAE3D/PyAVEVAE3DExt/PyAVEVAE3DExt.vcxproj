@@ -143,27 +143,27 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Aveva.Core.Database">
-      <HintPath>..\..\..\..\Program Files\AVEVA\UnifiedEngineering3.0\Aveva.Core.Database.dll</HintPath>
+      <HintPath>N:\MswR400Develop\Net\ue4_DLL\Aveva.Core.Database.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Aveva.Core.Database.Filters">
-      <HintPath>..\..\..\..\Program Files\AVEVA\UnifiedEngineering3.0\Aveva.Core.Database.Filters.dll</HintPath>
+      <HintPath>N:\MswR400Develop\Net\ue4_DLL\Aveva.Core.Database.Filters.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Aveva.Core.Geometry">
-      <HintPath>..\..\..\..\Program Files\AVEVA\UnifiedEngineering3.0\Aveva.Core.Geometry.dll</HintPath>
+      <HintPath>N:\MswR400Develop\Net\ue4_DLL\Aveva.Core.Geometry.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Aveva.Core.Implementation">
-      <HintPath>..\..\..\..\Program Files\AVEVA\UnifiedEngineering3.0\Aveva.Core.Implementation.dll</HintPath>
+      <HintPath>N:\MswR400Develop\Net\ue4_DLL\Aveva.Core.Implementation.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Aveva.Core.Utilities">
-      <HintPath>..\..\..\..\Program Files\AVEVA\UnifiedEngineering3.0\Aveva.Core.Utilities.dll</HintPath>
+      <HintPath>N:\MswR400Develop\Net\ue4_DLL\Aveva.Core.Utilities.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="PMLNet">
-      <HintPath>..\..\..\..\Program Files\AVEVA\UnifiedEngineering3.0\PMLNet.dll</HintPath>
+      <HintPath>N:\MswR400Develop\Net\ue4_DLL\PMLNet.dll</HintPath>
       <Private>false</Private>
     </Reference>
   </ItemGroup>

@@ -159,7 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PMLNet">
-      <HintPath>..\..\..\..\Program Files\AVEVA\UnifiedEngineering3.0\PMLNet.dll</HintPath>
+      <HintPath>N:\MswR400Develop\Net\ue4_DLL\PMLNet.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="System" />
