@@ -12,7 +12,7 @@ array<System::String^>^ PipeClass::getAllPipes(System::String^ scope) {
 
 array<System::String^>^ PipeClass::getAllPipesFromProject() {
     ACDF::DBElementCollection^ coll = gcnew ACDF::DBElementCollection(
-        DbElement::GetMdb(),
+        DbType::Design,
         gcnew ACDF::TypeFilter(DbElementType::GetElementType("PIPE")));
     return typecast::GetArrayFromCollection(coll);
 }
