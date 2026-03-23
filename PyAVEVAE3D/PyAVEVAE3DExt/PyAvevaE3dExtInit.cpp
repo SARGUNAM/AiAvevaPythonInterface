@@ -21,6 +21,11 @@ typedef struct {
         CommonClass* cpp_CommonClassInstance;
 } PyCommonClass;
 
+typedef struct {
+    PyObject_HEAD
+        PipeClass* cpp_PipeClassInstance;
+} PyPipeClass;
+
 static PyObject* PyRunInPdms(PyPmlClass* self, PyObject* args) {
     const char* commandChar;
     if (!PyArg_Parse(args, "s", &commandChar)) {
@@ -350,6 +355,92 @@ static PyTypeObject PyCommonModuleType = {
     PyType_GenericNew,
 };
 
+static PyObject* PyGetAllPipes(PyPipeClass* self, PyObject* args) {
+    try
+    {
+        const char* scope;
+        if (!PyArg_Parse(args, "s", &scope)) {
+            Py_RETURN_NONE;
+        }
+        return typecast::StringArrayToPyList(self->cpp_PipeClassInstance->getAllPipes(typecast::CharPToString(scope)));
+    }
+    catch (...)
+    {
+        Console::WriteLine("Unable to get all pipes");
+    }
+    Py_RETURN_NONE;
+}
+
+static PyObject* PyGetAttribute(PyPipeClass* self, PyObject* args) {
+    try
+    {
+        const char* pipeName;
+        const char* attName;
+        if (!PyArg_ParseTuple(args, "ss", &pipeName, &attName)) {
+            Py_RETURN_NONE;
+        }
+        return PyUnicode_FromString(typecast::StringToCharP(self->cpp_PipeClassInstance->getAttribute(typecast::CharPToString(pipeName), typecast::CharPToString(attName))));
+    }
+    catch (...)
+    {
+        Console::WriteLine("Unable to get attribute");
+    }
+    Py_RETURN_NONE;
+}
+
+static PyObject* PyGetBranches(PyPipeClass* self, PyObject* args) {
+    try
+    {
+        const char* pipeName;
+        if (!PyArg_Parse(args, "s", &pipeName)) {
+            Py_RETURN_NONE;
+        }
+        return typecast::StringArrayToPyList(self->cpp_PipeClassInstance->getBranches(typecast::CharPToString(pipeName)));
+    }
+    catch (...)
+    {
+        Console::WriteLine("Unable to get branches");
+    }
+    Py_RETURN_NONE;
+}
+
+static PyObject* PyGetComponents(PyPipeClass* self, PyObject* args) {
+    try
+    {
+        const char* branchName;
+        if (!PyArg_Parse(args, "s", &branchName)) {
+            Py_RETURN_NONE;
+        }
+        return typecast::StringArrayToPyList(self->cpp_PipeClassInstance->getComponents(typecast::CharPToString(branchName)));
+    }
+    catch (...)
+    {
+        Console::WriteLine("Unable to get components");
+    }
+    Py_RETURN_NONE;
+}
+
+static PyMethodDef PyPipeClassMethods[] = {
+    {"getAllPipes",    (PyCFunction)PyGetAllPipes,   METH_O,       "Returns all PIPE names in the given scope"},
+    {"getAttribute",  (PyCFunction)PyGetAttribute,  METH_VARARGS, "Returns attribute value of a pipe element"},
+    {"getBranches",   (PyCFunction)PyGetBranches,   METH_O,       "Returns all branch names of a pipe"},
+    {"getComponents", (PyCFunction)PyGetComponents, METH_O,       "Returns all component names in a branch"},
+    {NULL, NULL, 0, NULL}
+};
+
+static PyTypeObject PyPipeClassType = {
+    PyVarObject_HEAD_INIT(NULL, 0)
+    "pyavevae3dext.pipe",
+    sizeof(PipeClass),
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE,
+    "Module to interact with AVEVA PIPE elements",
+    0, 0, 0, 0, 0, 0,
+    PyPipeClassMethods,
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    PyType_GenericNew,
+};
+
 static PyMethodDef pyavevae3dext_methods[] = {
     { nullptr, nullptr, 0, nullptr }
 };
@@ -385,6 +476,11 @@ PyMODINIT_FUNC PyInit_pyavevae3dext(void) {
     Py_INCREF(&PyCommonModuleType);
     PyModule_AddObject(m, "COMMON", (PyObject*)&PyCommonModuleType);
     
+    if (PyType_Ready(&PyPipeClassType) < 0)
+        return NULL;
+    Py_INCREF(&PyPipeClassType);
+    PyModule_AddObject(m, "PIPE", (PyObject*)&PyPipeClassType);
+
     Console::WriteLine("pyavevae3dext init successfully.");
     return m;
 }

@@ -41,6 +41,15 @@ public:
 private:
 };
 
+class PipeClass
+{
+public:
+	array<System::String^>^ getAllPipes(System::String^ scope);
+	System::String^ getAttribute(System::String^ pipeName, System::String^ attName);
+	array<System::String^>^ getBranches(System::String^ pipeName);
+	array<System::String^>^ getComponents(System::String^ branchName);
+};
+
 class CommonClass
 {
 public:

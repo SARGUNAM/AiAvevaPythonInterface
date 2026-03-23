@@ -144,6 +144,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DbClass.cpp" />
+    <ClCompile Include="PipeClass.cpp" />
     <ClCompile Include="PmlClass.cpp" />
     <ClCompile Include="CommonModule.cpp" />
     <ClCompile Include="PyAvevaE3dExtInit.cpp" />
