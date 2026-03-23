@@ -181,7 +181,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="RunPy.pmlfrm" />
+    <Text Include="AiAvevaPythonInterface.pmlfrm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

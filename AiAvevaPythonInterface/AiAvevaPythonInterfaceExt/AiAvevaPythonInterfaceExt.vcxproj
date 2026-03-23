@@ -177,7 +177,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="DataBridge.pmlobj" />
+    <None Include="AiAvevaPythonInterface.pmlobj" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AllHeader.h" />

@@ -50,6 +50,6 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="RunPy.pmlfrm" />
+    <Text Include="AiAvevaPythonInterface.pmlfrm" />
   </ItemGroup>
 </Project>
