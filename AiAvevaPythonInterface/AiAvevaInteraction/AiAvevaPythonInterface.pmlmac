@@ -1,0 +1,34 @@
+-- AiAvevaPythonInterface.pmlmac
+-- Run this macro in AVEVA Unified Engineering to start Python and execute a script.
+-- Usage: $M %AVEVA_DESIGN_USER%\pml\AiAvevaPythonInterface.pmlmac
+
+-- Step 1: Load the AiAvevaPythonInterface DLL
+import 'AiAvevaPythonInterface'
+handle any
+  !!alert.message('Failed to load AiAvevaPythonInterface.dll')
+  $exit
+endhandle
+using namespace 'AiAvevaInteraction'
+
+-- Step 2: Create the interaction object (once per session)
+if ( undefined( !!AiAvevaInteractionObj ) ) then
+  !!AiAvevaInteractionObj = object AIAVEVAINTERACTIONOBJ()
+endif
+
+-- Step 3: Start Python environment (once per session)
+if ( not !!AiAvevaInteractionObj.isEnvOpen ) then
+  -- Option A: Use system Python
+  !!AiAvevaInteractionObj.StartSysPy()
+
+  -- Option B: Use a virtual environment (uncomment and set path)
+  -- !!AiAvevaInteractionObj.StartVenvPy('C:\MyVenv\Scripts\python.exe')
+endif
+
+-- Step 4: Run your Python script file
+-- Change this path to your script location
+!scriptFile = 'C:\Aibelprogs\PythonScripts\myscript.py'
+!!AiAvevaInteractionObj.RunPyFile(!scriptFile)
+
+-- Step 5: Read back any results PML variables set by Python (examples)
+-- q var !!resultBore
+-- q var !!largePipes
