@@ -97,7 +97,7 @@ static PyMethodDef PyPmlClassMethods[] = {
 
 static PyTypeObject PyPmlClassType = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "pyavevae3dext.pml",
+    "AiAvevaPythonInterface.pml",
     sizeof(PmlClass),   
     0,
     0,
@@ -236,7 +236,7 @@ static PyMethodDef PyDbClassMethods[] = {
 
 static PyTypeObject PyDbClassType = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "pyavevae3dext.db",
+    "AiAvevaPythonInterface.db",
     sizeof(DbClass),
     0,
     0,
@@ -316,7 +316,7 @@ static PyGetSetDef PyCommonModule_getsetters[] = {
 
 static PyTypeObject PyCommonModuleType = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "pyavevae3dext.common",
+    "AiAvevaPythonInterface.common",
     sizeof(CommonClass),
     0,
     0,
@@ -443,7 +443,7 @@ static PyMethodDef PyPipeClassMethods[] = {
 
 static PyTypeObject PyPipeClassType = {
     PyVarObject_HEAD_INIT(NULL, 0)
-    "pyavevae3dext.pipe",
+    "AiAvevaPythonInterface.pipe",
     sizeof(PipeClass),
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE,
@@ -460,13 +460,13 @@ static PyMethodDef pyavevae3dext_methods[] = {
 
 static PyModuleDef pyavevae3dext_module = {
     PyModuleDef_HEAD_INIT,
-    "pyavevae3dext",
+    "AiAvevaPythonInterface",
     "Provides the functionality to Access AVEVA E3D From Python",
     -1,
     pyavevae3dext_methods
 };
 
-PyMODINIT_FUNC PyInit_pyavevae3dext(void) {
+PyMODINIT_FUNC PyInit_AiAvevaPythonInterface(void) {
 
     PyObject* m;
 
@@ -494,6 +494,6 @@ PyMODINIT_FUNC PyInit_pyavevae3dext(void) {
     Py_INCREF(&PyPipeClassType);
     PyModule_AddObject(m, "PIPE", (PyObject*)&PyPipeClassType);
 
-    Console::WriteLine("pyavevae3dext init successfully.");
+    Console::WriteLine("AiAvevaPythonInterface init successfully.");
     return m;
 }

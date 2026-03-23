@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 import os
 import pathlib
 
-module_path = os.path.join('pyavevae3dext', 'pyavevae3dext.pyd')
+module_path = os.path.join('pyavevae3dext', 'AiAvevaPythonInterface.pyd')
 print(module_path)
 
 setup(
