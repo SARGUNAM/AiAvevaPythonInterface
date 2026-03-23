@@ -11,14 +11,14 @@ using namespace Aveva::Core::PMLNet;
 using namespace System::Runtime::InteropServices;
 using namespace std;
 
-namespace PyAVEVAInteraction {
+namespace AiAvevaInteraction {
 
 	[PMLNetCallable()]
-	public ref class PyAVEVAInteractionObj
+	public ref class AiAvevaInteractionObj
 	{
 	public:
 		[PMLNetCallable()]
-			PyAVEVAInteractionObj();
+			AiAvevaInteractionObj();
 		[PMLNetCallable()]
 			void StartVenvPy(System::String^ venv_exe_path);
 		[PMLNetCallable()]
@@ -30,9 +30,9 @@ namespace PyAVEVAInteraction {
 		[PMLNetCallable()]
 			void StopPy();
 		[PMLNetCallable()]
-			void Assign(PyAVEVAInteractionObj that);
+			void Assign(AiAvevaInteractionObj that);
 		[PMLNetCallable()]
-			~PyAVEVAInteractionObj();
+			~AiAvevaInteractionObj();
 		void RunPythonFile(const char* filePath);
 		PyConfig* pyConfig;
 		PyStatus* pyStatus;

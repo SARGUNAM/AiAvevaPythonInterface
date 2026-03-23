@@ -23,7 +23,7 @@
     <ProjectGuid>{C103FE39-B8E4-40A4-89D2-9DEFEA681AB3}</ProjectGuid>
     <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
-    <RootNamespace>PyAVEVAInteraction</RootNamespace>
+    <RootNamespace>AiAvevaInteraction</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -145,7 +145,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
-    <ClInclude Include="PyAVEVAInteraction.h" />
+    <ClInclude Include="AiAvevaInteraction.h" />
     <ClInclude Include="Resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -156,7 +156,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="PyAVEVAInteraction.cpp" />
+    <ClCompile Include="AiAvevaInteraction.cpp" />
     <ClCompile Include="typecast.cpp" />
   </ItemGroup>
   <ItemGroup>

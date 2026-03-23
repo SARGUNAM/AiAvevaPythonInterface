@@ -19,12 +19,12 @@ exit
 
 define method .runPy()
 
-  import 'PyAVEVAInteraction'
+  import 'AiAvevaInteraction'
   handle any
   endhandle
-  using namespace 'PyAVEVAInteraction'
-  if ( undefined( !!PyAVEVAInteractionObj ) ) then
-    !!PyAVEVAInteractionObj = object PYAVEVAINTERACTIONOBJ()
+  using namespace 'AiAvevaInteraction'
+  if ( undefined( !!AiAvevaInteractionObj ) ) then
+    !!AiAvevaInteractionObj = object AIAVEVAINTERACTIONOBJ()
   endif
 
   !this.filename = !!evar('AVEVA_DESIGN_USER') + 'tmpPyCode.py'
@@ -45,21 +45,21 @@ define method .executePyCode()
   !file.writeFile('OVERWRITE', !pyCode)
 
   -- run in the pyCode
-  !!PyAVEVAInteractionObj.RunPyFile(!this.filename)
+  !!AiAvevaInteractionObj.RunPyFile(!this.filename)
 endmethod
 
 define method .StarVenv()
   if ( undefined( !!pyVenv ) ) then
     !!alert.message(|Python Virtul Environment Cound not started. Please Define !!pyVenv.|)
   else
-    !!PyAVEVAInteractionObj.StartVenvPy( !!pyVenv )
+    !!AiAvevaInteractionObj.StartVenvPy( !!pyVenv )
   endif
 endmethod
 
 define method .StopEnv()
-  !!PyAVEVAInteractionObj.StopPy()
+  !!AiAvevaInteractionObj.StopPy()
 endmethod
 
 define method .StartSysEnv()
-  !!PyAVEVAInteractionObj.StartSysPy()
+  !!AiAvevaInteractionObj.StartSysPy()
 endmethod

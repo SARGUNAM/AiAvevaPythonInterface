@@ -23,9 +23,9 @@
     <ProjectGuid>{4135F815-73F2-4CDC-A0C8-968244EAA716}</ProjectGuid>
     <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
-    <RootNamespace>PyAVEVAE3DExt</RootNamespace>
+    <RootNamespace>AiAvevaPythonInterfaceExt</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>PyAVEVAE3DExt</ProjectName>
+    <ProjectName>AiAvevaPythonInterfaceExt</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

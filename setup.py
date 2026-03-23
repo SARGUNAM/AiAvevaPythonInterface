@@ -11,13 +11,13 @@ setup(
     description='Python Package Allows to interact with AVEVA Unified Engineering 3.0 using AVEVA Embedded Python Interaction dll (64-bit).',
     long_description=pathlib.Path("README.md").read_text(),
     long_description_content_type="text/markdown",
-    url="https://github.com/shivangKheradiya/PyAVEVAE3D",
+    url="https://github.com/shivangKheradiya/AiAvevaPythonInterface",
     author="Shivang Kheradiya",
     author_email="shivangatul@gmail.com",
     license="MIT license",
     project_urls={
-        "Documentation": "https://github.com/shivangKheradiya/PyAVEVAE3D",
-        "Source":"https://github.com/shivangKheradiya/PyAVEVAE3D",
+        "Documentation": "https://github.com/shivangKheradiya/AiAvevaPythonInterface",
+        "Source":"https://github.com/shivangKheradiya/AiAvevaPythonInterface",
     },
     classifiers=[
         "Programming Language :: Python :: 3.10",

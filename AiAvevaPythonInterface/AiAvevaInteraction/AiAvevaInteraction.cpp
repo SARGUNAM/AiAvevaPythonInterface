@@ -1,20 +1,20 @@
 #include "pch.h"
-#include "PyAVEVAInteraction.h"
+#include "AiAvevaInteraction.h"
 #include "cstdio"
 
 using namespace std;
 using namespace System::Runtime::InteropServices;
-using namespace PyAVEVAInteraction;
+using namespace AiAvevaInteraction;
 
-PyAVEVAInteractionObj::PyAVEVAInteractionObj() {
-	PyAVEVAInteractionObj::isEnvOpen = false;
+AiAvevaInteractionObj::AiAvevaInteractionObj() {
+	AiAvevaInteractionObj::isEnvOpen = false;
 }
 
-PyAVEVAInteractionObj::~PyAVEVAInteractionObj() {}
+AiAvevaInteractionObj::~AiAvevaInteractionObj() {}
 
-void PyAVEVAInteractionObj::StartVenvPy(System::String^ venv_exe_path) {
+void AiAvevaInteractionObj::StartVenvPy(System::String^ venv_exe_path) {
 
-	if (PyAVEVAInteractionObj::isEnvOpen)
+	if (AiAvevaInteractionObj::isEnvOpen)
 	{
 		Console::WriteLine("Python Environment is Already Running.");
 		return;
@@ -24,24 +24,24 @@ void PyAVEVAInteractionObj::StartVenvPy(System::String^ venv_exe_path) {
 	{
 		PyConfig pyConfig;
 		PyStatus pyStatus;
-		PyAVEVAInteractionObj::pyConfig = &pyConfig;
-		PyAVEVAInteractionObj::pyStatus = &pyStatus;
+		AiAvevaInteractionObj::pyConfig = &pyConfig;
+		AiAvevaInteractionObj::pyStatus = &pyStatus;
 		pin_ptr<const wchar_t> wch_venv_exe_path = PtrToStringChars(venv_exe_path);
 
-		PyConfig_InitIsolatedConfig(PyAVEVAInteractionObj::pyConfig);
-		PyConfig_SetString(PyAVEVAInteractionObj::pyConfig, &PyAVEVAInteractionObj::pyConfig->executable, wch_venv_exe_path);
+		PyConfig_InitIsolatedConfig(AiAvevaInteractionObj::pyConfig);
+		PyConfig_SetString(AiAvevaInteractionObj::pyConfig, &AiAvevaInteractionObj::pyConfig->executable, wch_venv_exe_path);
 
 		// Set home to the directory containing python.exe so Python can find its stdlib (encodings, etc.)
 		System::String^ homeDir = System::IO::Path::GetDirectoryName(venv_exe_path);
 		pin_ptr<const wchar_t> wch_home = PtrToStringChars(homeDir);
-		PyConfig_SetString(PyAVEVAInteractionObj::pyConfig, &PyAVEVAInteractionObj::pyConfig->home, wch_home);
+		PyConfig_SetString(AiAvevaInteractionObj::pyConfig, &AiAvevaInteractionObj::pyConfig->home, wch_home);
 
-		PyAVEVAInteractionObj::pyStatus = &Py_InitializeFromConfig(PyAVEVAInteractionObj::pyConfig);
-		if (PyStatus_Exception(*PyAVEVAInteractionObj::pyStatus)) {
+		AiAvevaInteractionObj::pyStatus = &Py_InitializeFromConfig(AiAvevaInteractionObj::pyConfig);
+		if (PyStatus_Exception(*AiAvevaInteractionObj::pyStatus)) {
 			goto exception;
 		}
 
-		PyConfig_Clear(PyAVEVAInteractionObj::pyConfig);
+		PyConfig_Clear(AiAvevaInteractionObj::pyConfig);
 
 		// Add the directory containing this DLL to sys.path so pyavevae3dext.pyd is found automatically
 		System::String^ dllDir = System::IO::Path::GetDirectoryName(
@@ -51,13 +51,13 @@ void PyAVEVAInteractionObj::StartVenvPy(System::String^ venv_exe_path) {
 		Console::WriteLine("Added to sys.path: " + dllDir);
 
 		Console::WriteLine("Python Virtual Environment Started Successfuly.");
-		PyAVEVAInteractionObj::isEnvOpen = true;
+		AiAvevaInteractionObj::isEnvOpen = true;
 		return;
 	exception:
-		PyConfig_Clear(PyAVEVAInteractionObj::pyConfig);
-		if (PyStatus_IsExit(*PyAVEVAInteractionObj::pyStatus))
+		PyConfig_Clear(AiAvevaInteractionObj::pyConfig);
+		if (PyStatus_IsExit(*AiAvevaInteractionObj::pyStatus))
 		{
-			Console::WriteLine("ExitCode :" + PyAVEVAInteractionObj::pyStatus->exitcode);
+			Console::WriteLine("ExitCode :" + AiAvevaInteractionObj::pyStatus->exitcode);
 		}
 		Console::WriteLine("Exception in StartVenvPy");
 	}
@@ -71,9 +71,9 @@ void PyAVEVAInteractionObj::StartVenvPy(System::String^ venv_exe_path) {
 	}
 }
 
-void PyAVEVAInteractionObj::StartSysPy() {
+void AiAvevaInteractionObj::StartSysPy() {
 
-	if ( PyAVEVAInteractionObj::isEnvOpen )
+	if ( AiAvevaInteractionObj::isEnvOpen )
 	{
 		Console::WriteLine("Python Environment is Already Running.");
 		return;
@@ -87,7 +87,7 @@ void PyAVEVAInteractionObj::StartSysPy() {
 		}
 		else
 		{
-			PyAVEVAInteractionObj::isEnvOpen = true;
+			AiAvevaInteractionObj::isEnvOpen = true;
 
 			// Add the directory containing this DLL to sys.path so pyavevae3dext.pyd is found automatically
 			System::String^ dllDir = System::IO::Path::GetDirectoryName(
@@ -108,8 +108,8 @@ void PyAVEVAInteractionObj::StartSysPy() {
 	}
 }
 
-void PyAVEVAInteractionObj::RunPyFile(System::String^ filePath) {
-	if (!PyAVEVAInteractionObj::isEnvOpen)
+void AiAvevaInteractionObj::RunPyFile(System::String^ filePath) {
+	if (!AiAvevaInteractionObj::isEnvOpen)
 	{
 		Console::WriteLine("Python Environment is not running to run the file " + filePath);
 		return;
@@ -117,7 +117,7 @@ void PyAVEVAInteractionObj::RunPyFile(System::String^ filePath) {
 
 	try
 	{
-		PyAVEVAInteractionObj::RunPythonFile(typecast::StringToCharP(filePath));
+		AiAvevaInteractionObj::RunPythonFile(typecast::StringToCharP(filePath));
 	}
 	catch (System::Exception^ ex)
 	{
@@ -129,8 +129,8 @@ void PyAVEVAInteractionObj::RunPyFile(System::String^ filePath) {
 	}
 }
 
-void PyAVEVAInteractionObj::RunPyCode(System::String^ PythonCode) {
-	if (!PyAVEVAInteractionObj::isEnvOpen)
+void AiAvevaInteractionObj::RunPyCode(System::String^ PythonCode) {
+	if (!AiAvevaInteractionObj::isEnvOpen)
 	{
 		Console::WriteLine("Python Environment is not running to run the code " + PythonCode);
 		return;
@@ -167,8 +167,8 @@ void PyAVEVAInteractionObj::RunPyCode(System::String^ PythonCode) {
 	}
 }
 
-void PyAVEVAInteractionObj::StopPy() {
-	if (!PyAVEVAInteractionObj::isEnvOpen)
+void AiAvevaInteractionObj::StopPy() {
+	if (!AiAvevaInteractionObj::isEnvOpen)
 	{
 		Console::WriteLine("Python Environment is not Running.");
 		return;
@@ -177,7 +177,7 @@ void PyAVEVAInteractionObj::StopPy() {
 	try
 	{
 		Py_Finalize();
-		PyAVEVAInteractionObj::isEnvOpen = false;
+		AiAvevaInteractionObj::isEnvOpen = false;
 		Console::WriteLine("Python Environment is Closed.");
 	}
 	catch (System::Exception^ ex)
@@ -190,9 +190,9 @@ void PyAVEVAInteractionObj::StopPy() {
 	}
 }
 
-void  PyAVEVAInteractionObj::Assign(PyAVEVAInteractionObj that) {}
+void  AiAvevaInteractionObj::Assign(AiAvevaInteractionObj that) {}
 
-void  PyAVEVAInteractionObj::RunPythonFile(const char* filePath) {
+void  AiAvevaInteractionObj::RunPythonFile(const char* filePath) {
 
 	PyObject* obj = Py_BuildValue("s", filePath);
 	FILE* fd = _Py_fopen_obj(obj, "r");
