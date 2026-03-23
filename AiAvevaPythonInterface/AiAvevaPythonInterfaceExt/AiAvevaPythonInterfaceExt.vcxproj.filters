@@ -32,7 +32,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="AiAvevaPythonInterface.pmlobj" />
+    <None Include="AiAvevaPythonInterfaceObject.pmlobj" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AllHeader.h">
