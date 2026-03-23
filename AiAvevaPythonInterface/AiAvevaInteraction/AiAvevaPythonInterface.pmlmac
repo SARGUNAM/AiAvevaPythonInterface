@@ -36,6 +36,6 @@ endif
 !scriptFile = 'C:\Aibelprogs\AvevaPythonScripts\myscript.py'
 !!AiAvevaInteractionObj.RunPyFile(!scriptFile)
 
--- Step 6: Read back any results PML variables set by Python (examples)
--- q var !!resultBore
--- q var !!largePipes
+-- Step 6: Read back results set by Python
+q var !!resultBore
+q var !!pyPipes
