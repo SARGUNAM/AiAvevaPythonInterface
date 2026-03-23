@@ -1,12 +1,12 @@
-# PyAVEVAE3D
+# AiAvevaPythonInterface
 
-PyAVEVAE3D contains Proof of Concept for Python 3 embedding into AVEVA Plant Design Products ( e.g. PDMS, E3D2.1/ 3.1, Diagrams, Engineering). These software are based on PML &amp; PML.Net.
+AiAvevaPythonInterface contains Proof of Concept for Python 3 embedding into AVEVA Plant Design Products ( e.g. PDMS, E3D2.1/ 3.1, Diagrams, Engineering). These software are based on PML &amp; PML.Net.
 
 This repository has Visual Studio Project Solution. The Solution contains 2 main projects:
 
-- **PyAVEVAInteraction :** It contains the architectural skeleton for Python Embadding into AVEVA E3D2.1.0.3. and It invoks the either system level python or virtual enviroment python.
+- **AiAvevaInteraction :** It contains the architectural skeleton for Python Embadding into AVEVA E3D2.1.0.3. and It invoks the either system level python or virtual enviroment python.
 
-- **PyAVEVAE3DExt :** It's Python extension module. It contains the c++ & python classes which allows python to directly interact with the AVEVA E3D.
+- **AiAvevaPythonInterfaceExt :** It's Python extension module. It contains the c++ & python classes which allows python to directly interact with the AVEVA E3D.
 
 ## Build Environment Information
 
@@ -18,9 +18,9 @@ This repository has Visual Studio Project Solution. The Solution contains 2 main
 
 1.  Copy following files from solution to the pmllib folder,
 
-    ```..\PyAVEVAE3D\PyAVEVAE3DExt\DataBridge.pmlobj```
+    ```..\AiAvevaPythonInterface\AiAvevaPythonInterfaceExt\AiAvevaPythonInterfaceObject.pmlobj```
 
-    ```..\PyAVEVAE3D\PyAVEVAInteraction\RunPy.pmlfrm```
+    ```..\AiAvevaPythonInterface\AiAvevaInteraction\AiAvevaPythonInterfaceForm.pmlfrm```
     
 2. Create Python 32bit Virtual enviroment. and Create PML Global Variable for Accessing Python Virtual from E3D Session. Use the following pml command,
     
@@ -30,30 +30,30 @@ This repository has Visual Studio Project Solution. The Solution contains 2 main
 
 3. Copy Dll files from repository to Aveva Installation Directory.
 
-    From : ```..\PyAVEVAE3D\SampleDlls\PyAVEVAInteraction.dll```
+    From : ```..\AiAvevaPythonInterface\SampleDlls\AiAvevaPythonInterface.dll```
 
     To : ```%AVEVA_DESIGN_EXE%```
 
-4. Install pyavevae3dext
+4. Install AiAvevaPythonInterface
 
-    -- Method 1: using ```pip install pyavevae3dext```.
-    
+    -- Method 1: using ```pip install AiAvevaPythonInterface```.
+
     -- Method 2: Build the .pyd file based on the your module dependencies and build the package. [Refer Development Documetation Section](./Documentation/Development_Enviroment.md)
 
-5. Open RunPy form using pml command ```Show !!RunPy```. RunPy Form is used to write a test python scripts.
+5. Open AiAvevaPythonInterfaceForm using pml command ```Show !!AiAvevaPythonInterfaceForm```. The form is used to write and run test python scripts.
 
 6. Run Python Script form the Form. And All the output from python scripts will be printed in the AVEVA console. e.g. ```print("abc")``` in python will give the output in the python console.
 
-## More information on pyavevae3dext PiPy Package.
+## More information on AiAvevaPythonInterface PiPy Package.
 
-pyavevae3dext PiPy package has basically 3 classes.
+AiAvevaPythonInterface PiPy package has basically 3 classes.
 
 1. COMMON:
 
     Common Class Instentiation,
     ```python
-    from pyavevae3dext import *
-    c = COMMON()
+    import AiAvevaPythonInterface
+    c = AiAvevaPythonInterface.COMMON()
     ```
 
     Method to know about current mdb.
@@ -81,8 +81,8 @@ pyavevae3dext PiPy package has basically 3 classes.
 
     Db Class Instentiation,
     ```python
-    from pyavevae3dext import *
-    d = DB()
+    import AiAvevaPythonInterface
+    d = AiAvevaPythonInterface.DB()
     ```
 
     Method to know Attributes on current elements,
@@ -122,8 +122,8 @@ pyavevae3dext PiPy package has basically 3 classes.
 
     PML Class Instentiation,
     ```python
-    from pyavevae3dext import *
-    p = PML()
+    import AiAvevaPythonInterface
+    p = AiAvevaPythonInterface.PML()
     ```
 
     Method to Run the PML Command in PDMS Console,

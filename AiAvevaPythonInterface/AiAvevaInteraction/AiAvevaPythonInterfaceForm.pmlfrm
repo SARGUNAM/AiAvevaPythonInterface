@@ -1,4 +1,4 @@
-setup form !!runPy resize
+setup form !!AiAvevaPythonInterfaceForm resize
   title 'Run Python'
   textpane .pyCode anchor top + left + bottom + right at xmin ymin at x0 y0 width 40 height 20
   path down
@@ -17,7 +17,7 @@ setup form !!runPy resize
   member .filename is STRING
 exit
 
-define method .runPy()
+define method .AiAvevaPythonInterfaceForm()
 
   import 'AiAvevaPythonInterface'
   handle any

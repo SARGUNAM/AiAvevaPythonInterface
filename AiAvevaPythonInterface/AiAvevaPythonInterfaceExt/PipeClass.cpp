@@ -1,6 +1,7 @@
 #include "AvevaWraperClassDefinations.h"
 
 using namespace Aveva::Core::Database;
+using namespace Aveva::Core::Utilities::CommandLine;
 using namespace System;
 
 array<System::String^>^ PipeClass::getAllPipes(System::String^ scope) {
@@ -26,10 +27,24 @@ System::String^ PipeClass::getAttribute(System::String^ pipeName, System::String
         if (val == nullptr) return "";
         return val->ToString();
     }
-    catch (System::Exception^ ex)
+    catch (System::Exception^)
     {
-        Console::WriteLine("getAttribute error: " + ex->Message);
-        return "";
+        // Dimension attributes (e.g. BORE, HEIGHT, WIDTH) cannot be read as generic Object.
+        // Fall back to PML expression: !!_AIATT = ##elementName##.ATTNAME
+        try
+        {
+            String^ pmlExpr = "!!_AIATT = ##" + pipeName + "##." + attName;
+            Command^ cmd = Command::CreateCommand(pmlExpr);
+            cmd->Run();
+            Command^ readCmd = Command::CreateCommand("");
+            double realVal = readCmd->GetPMLVariableReal("!!_AIATT");
+            return System::Convert::ToString(realVal);
+        }
+        catch (System::Exception^ ex2)
+        {
+            Console::WriteLine("getAttribute error: " + ex2->Message);
+            return "";
+        }
     }
 }
 

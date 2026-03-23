@@ -2,6 +2,8 @@
 -- Run this macro in AVEVA Unified Engineering to start Python and execute a script.
 -- Usage: $M %AVEVA_DESIGN_USER%\pml\AiAvevaPythonInterface.pmlmac
 
+!!pyVenv = |C:\Aibelprogs\Python\Installed\python.exe|
+
 -- Step 1: Load the AiAvevaPythonInterface DLL
 import 'AiAvevaPythonInterface'
 handle any
@@ -12,9 +14,13 @@ endhandle
 using namespace 'AiAvevaInteraction'
 
 -- Step 2: Load the DataBridge PML object (required for array transfer between PML and Python)
-pmlload object AiAvevaPythonInterfaceObject
+!!DataBridgeObj.delete()
+handle any
+endhandle
+pml load object AiAvevaPythonInterfaceObject
+!!DataBridgeObj = Object AiAvevaPythonInterfaceObject()
 if ( undefined( !!DataBridgeObj ) ) then
-  !!DataBridgeObj = object DATABRIDGE()
+  !!DataBridgeObj = Object AiAvevaPythonInterfaceObject()
 endif
 
 -- Step 3: Create the interaction object (once per session)
@@ -23,7 +29,8 @@ if ( undefined( !!AiAvevaInteractionObj ) ) then
 endif
 
 -- Step 4: Start Python environment (once per session)
-if ( not !!AiAvevaInteractionObj.isEnvOpen ) then
+!bool = !!AiAvevaInteractionObj.isEnvOpen
+if (!bool) then
   -- Option A: Use system Python
   !!AiAvevaInteractionObj.StartSysPy()
 
@@ -39,3 +46,6 @@ endif
 -- Step 6: Read back results set by Python
 q var !!resultBore
 q var !!pyPipes
+
+
+---$m C:\Aibelprogs\AibelCode\SARGUNAM\AiAvevaPythonInterface\AiAvevaPythonInterface\AiAvevaInteraction\AiAvevaPythonInterface.pmlmac
