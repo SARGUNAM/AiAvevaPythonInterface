@@ -355,6 +355,18 @@ static PyTypeObject PyCommonModuleType = {
     PyType_GenericNew,
 };
 
+static PyObject* PyGetAllPipesFromProject(PyPipeClass* self) {
+    try
+    {
+        return typecast::StringArrayToPyList(self->cpp_PipeClassInstance->getAllPipesFromProject());
+    }
+    catch (...)
+    {
+        Console::WriteLine("Unable to get all pipes from project");
+    }
+    Py_RETURN_NONE;
+}
+
 static PyObject* PyGetAllPipes(PyPipeClass* self, PyObject* args) {
     try
     {
@@ -421,6 +433,7 @@ static PyObject* PyGetComponents(PyPipeClass* self, PyObject* args) {
 }
 
 static PyMethodDef PyPipeClassMethods[] = {
+    {"getAllPipesFromProject", (PyCFunction)PyGetAllPipesFromProject, METH_NOARGS, "Returns all PIPE names in the entire project"},
     {"getAllPipes",    (PyCFunction)PyGetAllPipes,   METH_O,       "Returns all PIPE names in the given scope"},
     {"getAttribute",  (PyCFunction)PyGetAttribute,  METH_VARARGS, "Returns attribute value of a pipe element"},
     {"getBranches",   (PyCFunction)PyGetBranches,   METH_O,       "Returns all branch names of a pipe"},

@@ -10,6 +10,13 @@ array<System::String^>^ PipeClass::getAllPipes(System::String^ scope) {
     return typecast::GetArrayFromCollection(coll);
 }
 
+array<System::String^>^ PipeClass::getAllPipesFromProject() {
+    ACDF::DBElementCollection^ coll = gcnew ACDF::DBElementCollection(
+        DbElement::GetMdb(),
+        gcnew ACDF::TypeFilter(DbElementType::GetElementType("PIPE")));
+    return typecast::GetArrayFromCollection(coll);
+}
+
 System::String^ PipeClass::getAttribute(System::String^ pipeName, System::String^ attName) {
     try
     {
