@@ -147,7 +147,7 @@
     <ClCompile Include="PipeClass.cpp" />
     <ClCompile Include="PmlClass.cpp" />
     <ClCompile Include="CommonModule.cpp" />
-    <ClCompile Include="PyAvevaE3dExtInit.cpp" />
+    <ClCompile Include="AiAvevaPythonInterfaceExtInit.cpp" />
     <ClCompile Include="typecastClass.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="PyAvevaE3dExtInit.cpp">
+    <ClCompile Include="AiAvevaPythonInterfaceExtInit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CommonModule.cpp">
