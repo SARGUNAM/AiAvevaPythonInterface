@@ -5,17 +5,24 @@
 -- Step 1: Load the AiAvevaPythonInterface DLL
 import 'AiAvevaPythonInterface'
 handle any
-  !!alert.message('Failed to load AiAvevaPythonInterface.dll')
-  $exit
+  --!!alert.message('Failed to load AiAvevaPythonInterface.dll')
+  --return
 endhandle
+
 using namespace 'AiAvevaInteraction'
 
--- Step 2: Create the interaction object (once per session)
+-- Step 2: Load the DataBridge PML object (required for array transfer between PML and Python)
+pmlload object AiAvevaPythonInterfaceObject
+if ( undefined( !!DataBridgeObj ) ) then
+  !!DataBridgeObj = object DATABRIDGE()
+endif
+
+-- Step 3: Create the interaction object (once per session)
 if ( undefined( !!AiAvevaInteractionObj ) ) then
   !!AiAvevaInteractionObj = object AIAVEVAINTERACTIONOBJ()
 endif
 
--- Step 3: Start Python environment (once per session)
+-- Step 4: Start Python environment (once per session)
 if ( not !!AiAvevaInteractionObj.isEnvOpen ) then
   -- Option A: Use system Python
   !!AiAvevaInteractionObj.StartSysPy()
@@ -24,11 +31,11 @@ if ( not !!AiAvevaInteractionObj.isEnvOpen ) then
   -- !!AiAvevaInteractionObj.StartVenvPy('C:\MyVenv\Scripts\python.exe')
 endif
 
--- Step 4: Run your Python script file
+-- Step 5: Run your Python script file
 -- Change this path to your script location
-!scriptFile = 'C:\Aibelprogs\PythonScripts\myscript.py'
+!scriptFile = 'C:\Aibelprogs\AvevaPythonScripts\myscript.py'
 !!AiAvevaInteractionObj.RunPyFile(!scriptFile)
 
--- Step 5: Read back any results PML variables set by Python (examples)
+-- Step 6: Read back any results PML variables set by Python (examples)
 -- q var !!resultBore
 -- q var !!largePipes
