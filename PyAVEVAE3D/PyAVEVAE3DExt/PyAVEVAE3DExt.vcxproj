@@ -116,8 +116,8 @@
       <AdditionalDependencies />
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y "$(OutDir)$(TargetFileName)" "N:\MswR400Develop\Net\DLL\"</Command>
-      <Message>Copying $(TargetFileName) to N:\MswR400Develop\Net\DLL\</Message>
+      <Command>xcopy /Y "$(OutDir)$(TargetFileName)" "N:\MswR400Develop\Net\DLL\" &amp;&amp; xcopy /Y "$(OutDir)$(TargetFileName)" "C:\Aibelprogs\Python\Installed\Lib\site-packages\"</Command>
+      <Message>Copying $(TargetFileName) to N:\MswR400Develop\Net\DLL\ and site-packages</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -138,8 +138,8 @@
       <AdditionalDependencies />
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y "$(OutDir)$(TargetFileName)" "N:\MswR400Develop\Net\DLL\"</Command>
-      <Message>Copying $(TargetFileName) to N:\MswR400Develop\Net\DLL\</Message>
+      <Command>xcopy /Y "$(OutDir)$(TargetFileName)" "N:\MswR400Develop\Net\DLL\" &amp;&amp; xcopy /Y "$(OutDir)$(TargetFileName)" "C:\Aibelprogs\Python\Installed\Lib\site-packages\"</Command>
+      <Message>Copying $(TargetFileName) to N:\MswR400Develop\Net\DLL\ and site-packages</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

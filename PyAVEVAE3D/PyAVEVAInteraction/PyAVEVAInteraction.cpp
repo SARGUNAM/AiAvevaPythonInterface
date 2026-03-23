@@ -48,6 +48,7 @@ void PyAVEVAInteractionObj::StartVenvPy(System::String^ venv_exe_path) {
 			System::Reflection::Assembly::GetExecutingAssembly()->Location);
 		System::String^ sysPathCmd = "import sys; sys.path.insert(0, r'" + dllDir + "')";
 		PyRun_SimpleString(typecast::StringToCharP(sysPathCmd));
+		Console::WriteLine("Added to sys.path: " + dllDir);
 
 		Console::WriteLine("Python Virtual Environment Started Successfuly.");
 		PyAVEVAInteractionObj::isEnvOpen = true;
