@@ -74,18 +74,22 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>AiAvevaPythonInterface</TargetName>
     <IncludePath>C:\Program Files (x86)\Python310-32\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Program Files (x86)\Python310-32\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetName>AiAvevaPythonInterface</TargetName>
     <IncludePath>C:\Program Files (x86)\Python310-32\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Program Files (x86)\Python310-32\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>AiAvevaPythonInterface</TargetName>
     <IncludePath>C:\Aibelprogs\Python\Installed\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Aibelprogs\Python\Installed\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetName>AiAvevaPythonInterface</TargetName>
     <IncludePath>C:\Aibelprogs\Python\Installed\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Aibelprogs\Python\Installed\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>

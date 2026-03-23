@@ -19,7 +19,7 @@ exit
 
 define method .runPy()
 
-  import 'AiAvevaInteraction'
+  import 'AiAvevaPythonInterface'
   handle any
   endhandle
   using namespace 'AiAvevaInteraction'
